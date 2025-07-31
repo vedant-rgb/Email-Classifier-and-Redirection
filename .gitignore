@@ -1,0 +1,18 @@
+
+
+# Python
+__pycache__/
+*.py[cod]
+*.env
+.env
+LangchainService/.env
+LangchainService/myenv
+
+# IDE
+.idea/
+
+# OS junk
+.DS_Store
+
+# Maven
+email-routing-service/target/
