@@ -1,0 +1,145 @@
+{
+  "company_name": "YourCompany Inc.",
+  "departments": [
+    {
+      "name": "Human Resources Department",
+      "teams": [
+        {
+          "name": "Recruitment",
+          "employees": [
+            {
+              "name": "Alice Johnson",
+              "email": "alice.j@yourcompany.com",
+              "responsibility": "Handles job applications"
+            },
+            {
+              "name": "Rajiv Mehta",
+              "email": "rajiv.m@yourcompany.com",
+              "responsibility": "Coordinates with departments for hiring"
+            }
+          ]
+        },
+        {
+          "name": "Employee Relations",
+          "employees": [
+            {
+              "name": "Sarah Connor",
+              "email": "sarah.c@yourcompany.com",
+              "responsibility": "Manages employee grievances"
+            },
+            {
+              "name": "Ankit Sharma",
+              "email": "ankit.s@yourcompany.com",
+              "responsibility": "Organizes engagement programs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Customer Support Department",
+      "teams": [
+        {
+          "name": "Technical Support",
+          "employees": [
+            {
+              "name": "Priya Patel",
+              "email": "priya.p@yourcompany.com",
+              "responsibility": "Resolves product issues"
+            },
+            {
+              "name": "John Lee",
+              "email": "john.l@yourcompany.com",
+              "responsibility": "Specializes in API issues"
+            }
+          ]
+        },
+        {
+          "name": "Billing Support",
+          "employees": [
+            {
+              "name": "Angela White",
+              "email": "angela.w@yourcompany.com",
+              "responsibility": "Manages invoice-related concerns"
+            },
+            {
+              "name": "Kevin Wright",
+              "email": "kevin.w@yourcompany.com",
+              "responsibility": "Handles payment issues"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sales and Marketing Department",
+      "teams": [
+        {
+          "name": "B2B Sales",
+          "employees": [
+            {
+              "name": "Rohit Nair",
+              "email": "rohit.n@yourcompany.com",
+              "responsibility": "Manages enterprise clients"
+            },
+            {
+              "name": "Julia Chen",
+              "email": "vikiw95792@devdigs.com",
+              "responsibility": "CRM outreach"
+            }
+          ]
+        },
+        {
+          "name": "Digital Marketing",
+          "employees": [
+            {
+              "name": "Tanya Singh",
+              "email": "tanya.s@yourcompany.com",
+              "responsibility": "Paid ads and SEO"
+            },
+            {
+              "name": "David Kim",
+              "email": "david.k@yourcompany.com",
+              "responsibility": "Social media strategy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IT Department",
+      "teams": [
+        {
+          "name": "Infrastructure",
+          "employees": [
+            {
+              "name": "Abdul Rahman",
+              "email": "abdul.r@yourcompany.com",
+              "responsibility": "Manages servers and cloud infra"
+            },
+            {
+              "name": "Neha Verma",
+              "email": "neha.v@yourcompany.com",
+              "responsibility": "Ensures uptime and monitoring"
+            }
+          ]
+        },
+        {
+          "name": "Internal Tools",
+          "employees": [
+            {
+              "name": "Aditya Rao",
+              "email": "aditya.r@yourcompany.com",
+              "responsibility": "Builds internal tools"
+            },
+            {
+              "name": "Zoe Yang",
+              "email": "zoe.y@yourcompany.com",
+              "responsibility": "Maintains employee portal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
