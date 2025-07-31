@@ -4,7 +4,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vedant.email_routing_service.dto.EmailAnalysisResponse;
 import com.vedant.email_routing_service.dto.EmailMessageDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,7 +15,6 @@ import java.util.Set;
 
 @Service
 public class LangchainService {
-
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 
@@ -21,11 +23,14 @@ public class LangchainService {
             "sarah.c@yourcompany.com", "ankit.s@yourcompany.com",
             "priya.p@yourcompany.com", "john.l@yourcompany.com",
             "angela.w@yourcompany.com", "kevin.w@yourcompany.com",
-            "rohit.n@yourcompany.com", "julia.c@yourcompany.com",
+            "rohit.n@yourcompany.com", "vikiw95792@devdigs.com",
             "tanya.s@yourcompany.com", "david.k@yourcompany.com",
             "abdul.r@yourcompany.com", "neha.v@yourcompany.com",
             "aditya.r@yourcompany.com", "zoe.y@yourcompany.com"
     );
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     public LangchainService(RestTemplate restTemplate, ObjectMapper objectMapper) {
         this.restTemplate = restTemplate;
@@ -44,27 +49,30 @@ public class LangchainService {
 
             System.out.println("LangChain Response: " + responseBody);
 
-            // Parse JSON → extract "analysis" string → map to POJO
             JsonNode root = objectMapper.readTree(responseBody);
-            String analysisString = root.path("analysis").asText();
-
-            // Clean possible triple backticks or json formatting
-            String cleaned = analysisString.replace("```json", "").replace("```", "").trim();
-
-            EmailAnalysisResponse analysis = objectMapper.readValue(cleaned, EmailAnalysisResponse.class);
+            JsonNode analysisNode = root.path("analysis");
+            EmailAnalysisResponse analysis = objectMapper.treeToValue(analysisNode, EmailAnalysisResponse.class);
 
             System.out.println("Sentiment: " + analysis.getSentiment());
             System.out.println("Forward To: " + analysis.getForward_to());
 
             if (ALLOWED_EMAILS.contains(analysis.getForward_to())) {
                 System.out.println("✅ Forwarding email to: " + analysis.getForward_to());
-                // TODO: Add your forwarding logic here
+
+                // ✅ Send the email
+                SimpleMailMessage message = new SimpleMailMessage();
+                message.setTo(analysis.getForward_to());
+                message.setSubject(email.getSubject());
+                message.setText(email.getBody());
+                javaMailSender.send(message);
+
+                System.out.println("📤 Email sent to: " + analysis.getForward_to());
             } else {
                 System.out.println("❌ Email address not found in RAG: " + analysis.getForward_to());
             }
 
         } catch (Exception e) {
-            System.err.println("LangChain call failed: " + e.getMessage());
+            System.err.println("LangChain call failed or email send failed: " + e.getMessage());
         }
     }
 }

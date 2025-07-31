@@ -1,36 +1,19 @@
 package com.vedant.email_routing_service.dto;
 
-import lombok.Data;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-@Data
-
-public class EmailMessageDTO implements Serializable {
-    private String subject;
+public class EmailMessageDTO {
     private String from;
+    private String to;
+    private String subject;
     private String body;
-    private List<Attachment> attachments;
 
     public EmailMessageDTO() {
-        this.attachments = new ArrayList<>();
     }
 
-    public EmailMessageDTO(String subject, String from, String body) {
-        this.subject = subject;
+    public EmailMessageDTO(String from, String to, String subject, String body) {
         this.from = from;
-        this.body = body;
-        this.attachments = new ArrayList<>();
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
+        this.to = to;
         this.subject = subject;
+        this.body = body;
     }
 
     public String getFrom() {
@@ -41,6 +24,22 @@ public class EmailMessageDTO implements Serializable {
         this.from = from;
     }
 
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
     public String getBody() {
         return body;
     }
@@ -49,17 +48,13 @@ public class EmailMessageDTO implements Serializable {
         this.body = body;
     }
 
-    public List<Attachment> getAttachments() {
-        return attachments;
+    @Override
+    public String toString() {
+        return "EmailMessageDTO{" +
+                "from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", subject='" + subject + '\'' +
+                ", body='" + body + '\'' +
+                '}';
     }
-
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
-    }
-
-    public void addAttachment(Attachment attachment) {
-        this.attachments.add(attachment);
-    }
-
-
 }

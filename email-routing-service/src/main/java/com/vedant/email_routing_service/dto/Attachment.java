@@ -1,39 +1,49 @@
 package com.vedant.email_routing_service.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 public class Attachment implements Serializable {
-    private String fileName;
-    private String mimeType;
-    private String base64Content;
+    @JsonProperty("filename")
+    private String filename;
 
-    public Attachment(String fileName, String mimeType, String base64Content) {
-        this.fileName = fileName;
-        this.mimeType = mimeType;
-        this.base64Content = base64Content;
+    @JsonProperty("contentType")
+    private String contentType;
+
+    @JsonProperty("data")
+    private String data; // Base64-encoded
+
+    public Attachment() {
     }
 
-    public String getFileName() {
-        return fileName;
+    public Attachment(String filename, String contentType, String data) {
+        this.filename = filename;
+        this.contentType = contentType;
+        this.data = data;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public String getFilename() {
+        return filename;
     }
 
-    public String getMimeType() {
-        return mimeType;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
-    public void setMimeType(String mimeType) {
-        this.mimeType = mimeType;
+    public String getContentType() {
+        return contentType;
     }
 
-    public String getBase64Content() {
-        return base64Content;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
-    public void setBase64Content(String base64Content) {
-        this.base64Content = base64Content;
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }
